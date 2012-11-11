@@ -5,7 +5,7 @@ So here's a quick template I use for client side experiments.
 
 # Usage
 
-Go to Downloads and download an archive of this repo.
+Go to Downloads and download [the latest version of this repo as an archive](https://github.com/tadast/html_canvas_bootsrap/archive/master.zip).
 
 # Handy Tools
 
