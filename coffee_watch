@@ -1,2 +1,0 @@
-#!/bin/sh
-coffee --watch --compile -b scripts/*.coffee
