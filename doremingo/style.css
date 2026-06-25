@@ -1,0 +1,114 @@
+:root {
+  --bg: #fff7ed;
+  --ink: #3b2d3f;
+  --pink: #ff5d8f;
+  --yellow: #ffd166;
+  --berry: #c42e62; /* AA-safe pink for small text */
+  --font: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: var(--berry); }
+
+/* ---- landing ---- */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.hero img {
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(0 10px 24px rgba(255, 93, 143, 0.35));
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 9vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 1.25rem 0 0.4rem;
+}
+
+.hero .tagline {
+  font-size: clamp(1.05rem, 4vw, 1.3rem);
+  max-width: 26ch;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 1.75rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.badge .sub {
+  display: block;
+  font-weight: 500;
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin-top: 0.1rem;
+}
+
+/* ---- footer ---- */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+footer a { color: inherit; }
+
+/* ---- privacy doc ---- */
+.doc {
+  flex: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  width: 100%;
+}
+
+.doc .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.doc .brand img { width: 40px; height: 40px; }
+.doc .brand span { font-size: 1.4rem; font-weight: 700; }
+
+.doc h1 { font-size: 1.9rem; margin-bottom: 0.25rem; }
+.doc .updated { color: var(--berry); font-size: 0.85rem; margin-bottom: 1.75rem; }
+.doc h2 { font-size: 1.2rem; margin: 1.75rem 0 0.5rem; }
+.doc p, .doc li { margin-bottom: 0.75rem; }
+.doc ul { padding-left: 1.4rem; }
+.doc .back { display: inline-block; margin-top: 2rem; font-size: 0.9rem; }
