@@ -74,6 +74,8 @@ a { color: var(--berry); }
   margin-top: 0.1rem;
 }
 
+.play-now { margin-top: 1.5rem; font-size: 0.95rem; }
+
 /* ---- footer ---- */
 footer {
   text-align: center;
