@@ -1,31 +1,359 @@
 <!doctype html>
+<html lang="en">
 <head>
-  <title>OK Do Ltd! - Web development in London, UK</title>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="viewport" content = "width = device-width, height = device-height, user-scalable = no" />
-  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="styles/main.css" type="text/css" media="screen"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OK Do! Ltd — software products and product engineering, London</title>
+<meta name="description" content="OK Do! Ltd is a London software company, founded in 2015. We build our own products, and we build software for clients such as GOV.UK and Trainline.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OK Do! Ltd — we build software products. Ours, and yours.">
+<meta property="og:description" content="A London software company since 2015. Products for specialist markets, and senior product engineering for clients.">
+<meta property="og:url" content="https://www.okdo.co.uk/">
+<link rel="canonical" href="https://www.okdo.co.uk/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1117'/%3E%3Ccircle cx='24' cy='32' r='11' fill='none' stroke='%235ac8fb' stroke-width='6'/%3E%3Cpath d='M42 19v26M42 33l11-14M44 31l10 14' stroke='%23fff' stroke-width='6' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f7f4;
+  --paper: #ffffff;
+  --ink: #0d1117;
+  --ink-2: #3a414b;
+  --mute: #646b75;
+  --line: #e2e2dc;
+  --blue: #5ac8fb;
+  --link: #0b6ea8;
+  --gutter: max(16px, 4vw);
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--sans); overflow-x: hidden; }
+a { color: inherit; }
+img, svg { display: block; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
+.mono { font-family: var(--mono); font-size: 13px; letter-spacing: .02em; color: var(--mute); text-transform: uppercase; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 4px; }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 10; transition: background .3s, box-shadow .3s; }
+.top.scrolled { background: rgba(247, 247, 244, .82); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); box-shadow: 0 1px 0 var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-weight: 700; font-size: 22px; letter-spacing: -.02em; text-decoration: none; display: inline-flex; align-items: baseline; gap: .28em; }
+.logo .ok { display: inline-block; color: var(--ink); transform: rotate(.25turn) translate(-2px, -4px); transition: transform .45s var(--ease); }
+.logo:hover .ok, .logo:focus-visible .ok { transform: rotate(0); }
+.logo .ltd { color: var(--mute); font-weight: 400; font-size: 15px; }
+nav { display: flex; gap: 4px; }
+nav a { text-decoration: none; font-size: 15px; color: var(--ink-2); padding: 10px 12px; border-radius: 999px; transition: background .2s; }
+nav a:hover { background: rgba(13, 17, 23, .06); }
+nav a.cta { background: var(--ink); color: #fff; }
+nav a.cta:hover { background: #262d38; }
+@media (max-width: 640px) { nav a:not(.cta) { display: none; } }
+
+/* hero */
+.hero { padding-top: clamp(48px, 10vw, 120px); padding-bottom: clamp(40px, 6vw, 72px); }
+.hero .mono { margin-bottom: 28px; }
+h1 { font-size: clamp(2.6rem, 8.2vw, 6.4rem); line-height: .98; letter-spacing: -.045em; font-weight: 600; }
+h1 .line { display: block; overflow: hidden; padding-bottom: .06em; }
+h1 .line > span { display: inline-block; transform: translateY(105%); animation: rise .9s var(--ease) forwards; }
+h1 .line:nth-child(2) > span { animation-delay: .12s; }
+h1 em { font-style: normal; position: relative; white-space: nowrap; }
+h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: .09em; background: var(--blue); transform: scaleX(0); transform-origin: left; animation: draw .7s var(--ease) forwards; }
+h1 em:first-of-type::after { animation-delay: .8s; }
+h1 em:last-of-type::after { animation-delay: 1s; }
+@keyframes rise { to { transform: none; } }
+@keyframes draw { to { transform: scaleX(1); } }
+.lede { max-width: 40ch; font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.5; color: var(--ink-2); margin-top: 28px; opacity: 0; animation: fade .8s .35s var(--ease) forwards; }
+@keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.doors { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: clamp(40px, 6vw, 72px); }
+@media (max-width: 760px) { .doors { grid-template-columns: 1fr; } }
+.door { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; gap: 10px; min-height: 220px; padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); text-decoration: none; opacity: 0; animation: fade .8s var(--ease) forwards; transition: color .45s var(--ease), border-color .45s; }
+.door:nth-child(1) { animation-delay: .5s; }
+.door:nth-child(2) { animation-delay: .6s; }
+.door::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--ink); clip-path: circle(0 at var(--x, 90%) var(--y, 90%)); transition: clip-path .6s var(--ease); }
+.door:hover, .door:focus-visible { color: #fff; border-color: var(--ink); }
+.door:hover::before, .door:focus-visible::before { clip-path: circle(150% at var(--x, 90%) var(--y, 90%)); }
+.door .mono { margin: 0; transition: color .45s; }
+.door:hover .mono, .door:focus-visible .mono { color: #9aa3ad; }
+.door h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); letter-spacing: -.03em; font-weight: 600; line-height: 1.1; }
+.door p { color: inherit; opacity: .8; max-width: 34ch; }
+.door .chips { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px; padding-top: 16px; }
+.door .chips span { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid currentColor; opacity: .7; }
+.door .arrow { position: absolute; top: 26px; right: 26px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid currentColor; display: grid; place-items: center; transition: transform .45s var(--ease); }
+.door:hover .arrow { transform: translateY(4px); }
+
+/* sections */
+section.block { padding: clamp(64px, 10vw, 128px) 0; border-top: 1px solid var(--line); }
+.block-head { display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px 48px; margin-bottom: 40px; align-items: end; }
+@media (max-width: 760px) { .block-head { grid-template-columns: 1fr; } }
+.block-head h2 { font-size: clamp(2rem, 5vw, 3.6rem); letter-spacing: -.04em; line-height: 1; font-weight: 600; }
+.block-head p { color: var(--ink-2); max-width: 52ch; }
+
+/* products */
+.plist { list-style: none; border-top: 1px solid var(--line); }
+.prow { display: grid; grid-template-columns: 1fr; gap: 12px 24px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--line); text-decoration: none; position: relative; }
+.prow .idx { font-family: var(--mono); font-size: 13px; color: var(--mute); }
+.prow .name { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600; letter-spacing: -.03em; line-height: 1.1; transition: transform .45s var(--ease); }
+.prow .name small { display: block; font-size: 15px; font-weight: 400; letter-spacing: 0; color: var(--mute); margin-top: 4px; }
+.prow .what { color: var(--ink-2); max-width: 48ch; }
+.prow .status { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; white-space: nowrap; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); transition: background .3s, color .3s, border-color .3s; }
+.prow .status i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 0 var(--c); animation: ping 2.4s infinite; }
+@keyframes ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--c) 60%, transparent); } 70%, 100% { box-shadow: 0 0 0 8px transparent; } }
+.prow:hover .name, .prow:focus-visible .name { transform: translateX(8px); }
+.prow:hover .status, .prow:focus-visible .status { background: var(--ink); color: #fff; border-color: var(--ink); }
+.prow .peek { --pv-accent: var(--c); --pv-ink: var(--ink); --pv-mute: #8b919a; --pv-line: #e6e6e0; --pv-mono: var(--mono); background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
+/* touch and narrow screens: the preview sits in the row */
+.prow .idx { display: none; }
+.prow .peek { order: -1; width: 100%; aspect-ratio: 16 / 10; max-height: 240px; }
+.prow .status { justify-self: start; }
+@media (min-width: 640px) {
+  .prow { grid-template-columns: 220px minmax(0, 1fr); }
+  .prow .peek { grid-row: span 3; }
+}
+/* fine pointers on wide screens: the preview follows the cursor */
+@media (hover: hover) and (pointer: fine) and (min-width: 900px) {
+  .prow { grid-template-columns: 48px minmax(0, 1.1fr) minmax(0, 1.6fr) auto; gap: 8px 24px; }
+  .prow .idx { display: block; }
+  .prow .status { justify-self: auto; }
+  .prow .peek { order: 0; grid-row: auto; aspect-ratio: auto; max-height: none; position: fixed; left: 0; top: 0; width: 280px; height: 175px; pointer-events: none; z-index: 5; opacity: 0; transform: translate(var(--px, 0), var(--py, 0)) scale(.85) rotate(-3deg); transition: opacity .25s, transform .5s var(--ease); box-shadow: 0 24px 60px -20px rgba(13, 17, 23, .35); }
+  .prow:hover .peek { opacity: 1; transform: translate(var(--px, 0), var(--py, 0)) scale(1) rotate(-2deg); }
+}
+
+/* client work */
+.clients { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-bottom: 56px; }
+@media (max-width: 640px) { .clients { grid-template-columns: repeat(2, 1fr); } }
+.clients li { display: grid; place-items: center; text-align: center; min-height: 112px; padding: 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-weight: 600; font-size: clamp(1.05rem, 2.2vw, 1.45rem); letter-spacing: -.02em; color: #4a515b; transition: color .3s, background .3s; }
+.clients li small { display: block; font-weight: 400; font-size: 12px; letter-spacing: .02em; color: var(--mute); margin-top: 2px; }
+.clients li:hover { color: var(--ink); background: var(--paper); }
+.caps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-bottom: 64px; }
+@media (max-width: 960px) { .caps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .caps { grid-template-columns: 1fr; gap: 24px; } }
+.caps h3 { font-size: 18px; letter-spacing: -.01em; margin: 10px 0 6px; }
+.caps p { color: var(--ink-2); font-size: 16px; }
+.caps .n { font-family: var(--mono); font-size: 13px; color: var(--mute); display: block; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+.cases { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--line); }
+.cases div { display: grid; grid-template-columns: 240px 1fr; gap: 4px 32px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+@media (max-width: 640px) { .cases div { grid-template-columns: 1fr; } }
+.cases dt { font-weight: 600; }
+.cases dd { color: var(--ink-2); }
+.stack { margin-top: 28px; }
+
+/* company */
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+@media (max-width: 760px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+.facts div { padding-top: 14px; border-top: 1px solid var(--ink); }
+.facts dt { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--mute); }
+.facts dd { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; letter-spacing: -.02em; margin-top: 4px; }
+
+/* contact */
+.contact { padding: clamp(72px, 12vw, 160px) 0; border-top: 1px solid var(--line); }
+.contact .big { display: inline-block; font-size: clamp(2rem, 7.5vw, 6rem); font-weight: 600; letter-spacing: -.045em; line-height: 1; text-decoration: none; background: linear-gradient(var(--blue), var(--blue)) left 92% / 0 .09em no-repeat; transition: background-size .6s var(--ease); overflow-wrap: anywhere; }
+.contact .big:hover, .contact .big:focus-visible { background-size: 100% .09em; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 12px 22px; border-radius: 999px; text-decoration: none; font-weight: 500; border: 1px solid var(--ink); transition: background .25s, color .25s, transform .25s var(--ease); }
+.btn:hover { transform: translateY(-2px); }
+.btn.solid { background: var(--ink); color: #fff; }
+.btn.ghost:hover { background: var(--ink); color: #fff; }
+
+footer { border-top: 1px solid var(--line); padding: 28px 0 96px; font-size: 14px; color: var(--mute); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+/* scroll reveal */
+.rv { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+.rv.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; scroll-behavior: auto !important; }
+  .rv { opacity: 1; transform: none; }
+  .prow .status i { animation: none; }
+}
+@media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+</style>
 </head>
 <body>
-  <h1>
-    <span class="ok">OK</span> Do! <span class="dim">Ltd.</span>
-  </h1>
-  <p>Product oriented software engineering services.</p>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="OK Do! Ltd, home"><span><span class="ok">OK</span> Do!</span><span class="ltd">Ltd</span></a>
+    <nav aria-label="Main">
+      <a href="#products">Products</a>
+      <a href="#work">Client work</a>
+      <a href="#company">Company</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <p>
-    We specialise in SaaS for early stage startups. We can help you with building your mobile API, web application, infrastructure and more.
-    <a href="mailto:hello@okdo.co.uk">Get in touch</a>.
-  </p>
+<main>
+  <section class="hero wrap">
+    <p class="mono">Software company · London · Since 2015</p>
+    <h1><span class="line"><span>We build software products.</span></span><span class="line"><span><em>Ours</em>, and <em>yours</em>.</span></span></h1>
+    <p class="lede">We build our own products for specialist markets. We also build software for clients such as GOV.UK and Trainline.</p>
+    <div class="doors">
+      <a class="door" href="#products">
+        <span class="mono">01 · Our products</span>
+        <h2>Products</h2>
+        <p>Data and software products for compliance, education, hospitality and music.</p>
+        <span class="chips"><span>Kestrel</span><span>Almanac</span><span>Barback</span><span>DoReMingo</span></span>
+        <span class="arrow" aria-hidden="true">↓</span>
+      </a>
+      <a class="door" href="#work">
+        <span class="mono">02 · For clients</span>
+        <h2>Client work</h2>
+        <p>Senior product engineering for startups and established teams, from the first version to a stable service.</p>
+        <span class="chips"><span>GOV.UK</span><span>Trainline</span><span>Peach</span><span>Cinematik</span></span>
+        <span class="arrow" aria-hidden="true">↓</span>
+      </a>
+    </div>
+  </section>
 
-  <p>
-    We run our own SaaS product <a href="https://www.inboxairlock.com">Inbox Airlock</a> for Gmail.
-  </p>
+  <section class="block" id="products">
+    <div class="wrap">
+      <div class="block-head rv">
+        <h2>Products</h2>
+        <p>Each product answers one question for one kind of buyer. Almanac has pilot places open. Barback is in a beta for invited users. Kestrel is coming soon.</p>
+      </div>
+      <ol class="plist">
+        <li class="rv"><a class="prow" href="kestrel/" style="--c:#d9480f">
+          <span class="idx">P1</span>
+          <span class="name">Kestrel<small>Pricing compliance monitor</small></span>
+          <span class="what">Dated evidence of drip pricing, false urgency and other pricing practices that UK consumer law bans.</span>
+          <span class="status"><i></i>Coming soon</span>
+          <span class="peek" data-preview="kestrel"></span>
+        </a></li>
+        <li class="rv"><a class="prow" href="almanac/" style="--c:#3b5bdb">
+          <span class="idx">P2</span>
+          <span class="name">Almanac<small>School product census</small></span>
+          <span class="what">Which products each English state school uses, from public sources. For companies that sell to schools.</span>
+          <span class="status"><i></i>Pilot places open</span>
+          <span class="peek" data-preview="almanac"></span>
+        </a></li>
+        <li class="rv"><a class="prow" href="barback/" style="--c:#2b8a3e">
+          <span class="idx">P3</span>
+          <span class="name">Barback<small>Account finder for hospitality suppliers</small></span>
+          <span class="what">Hospitality groups that fit your range, with menu evidence, signals and the route to the decision maker.</span>
+          <span class="status"><i></i>Read more</span>
+          <span class="peek" data-preview="barback"></span>
+        </a></li>
+        <li class="rv"><a class="prow" href="doremingo/" style="--c:#ff5d8f">
+          <span class="idx">P4</span>
+          <span class="name">DoReMingo<small>Ear-training game</small></span>
+          <span class="what">A cheerful game that teaches you to recognise musical notes by ear. Play the daily puzzle free.</span>
+          <span class="status"><i></i>Daily puzzle live</span>
+          <span class="peek" data-preview="doremingo" data-src="doremingo/flamingo.svg"></span>
+        </a></li>
+      </ol>
+    </div>
+  </section>
 
-  <p class="tiny dim">
-    OK Do! Ltd is a company registered in England under number 09417027. VAT registration number 208 1098 27.
-  </p>
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="block-head rv">
+        <h2>Client work</h2>
+        <p>We join product teams as senior engineers. We take a product from the first prototype to a stable service, and we act as a technical co-founder when a team needs one.</p>
+      </div>
+      <ul class="clients" aria-label="Selected clients">
+        <li class="rv">GOV.UK</li>
+        <li class="rv" style="--d:.05s">Trainline</li>
+        <li class="rv" style="--d:.1s"><span>Peach<small>now Caria</small></span></li>
+        <li class="rv" style="--d:.15s">Cinematik</li>
+        <li class="rv" style="--d:.2s">Pragmatic Genomics</li>
+        <li class="rv" style="--d:.25s">Cherrypick</li>
+      </ul>
+      <div class="caps">
+        <div class="rv"><span class="n">01</span><h3>Build the first version</h3><p>Prototypes and first versions that test product–market fit quickly.</p></div>
+        <div class="rv" style="--d:.06s"><span class="n">02</span><h3>Grow the product</h3><p>Web applications, APIs, checkout and payments, and integrations with third-party APIs.</p></div>
+        <div class="rv" style="--d:.12s"><span class="n">03</span><h3>Run it well</h3><p>Infrastructure as code, zero-downtime deployments, single sign-on and lower hosting costs.</p></div>
+        <div class="rv" style="--d:.18s"><span class="n">04</span><h3>Data and AI</h3><p>Data pipelines, reporting, and AI features that do a measurable job.</p></div>
+      </div>
+      <dl class="cases">
+        <div class="rv"><dt>GOV.UK</dt><dd>A publishing application for the Service Manual, and changes to Smart Answers.</dd></div>
+        <div class="rv"><dt>Peach (now Caria)</dt><dd>Automated quality checks, transcoding and delivery of video adverts. Shared services and lower AWS costs after a merger.</dd></div>
+        <div class="rv"><dt>Pragmatic Genomics</dt><dd>Infrastructure for SequenceServer that sends large gene-sequence searches to high-performance servers. Single sign-on with SAML.</dd></div>
+        <div class="rv"><dt>Cinematik</dt><dd>Automation of back-office operations, and large language model (LLM) integrations. A faster checkout, and a Rails application that stays stable at peak times.</dd></div>
+        <div class="rv"><dt>Cherrypick</dt><dd>A smart grocery assistant. AI that reads recipes and matches ingredients to grocery products, with tool calling and retrieval-augmented generation (RAG). Order integrations with several grocers.</dd></div>
+      </dl>
+      <p class="mono stack rv">Ruby on Rails · React · PostgreSQL · AWS · Terraform · Kamal</p>
+    </div>
+  </section>
+
+  <section class="block" id="company">
+    <div class="wrap">
+      <div class="block-head rv">
+        <h2>Company</h2>
+        <p>Tadas Tamošauskas founded OK Do! Ltd in London in 2015. We have built software for clients since then, and some of it still runs ten years later. Now we also build our own products.</p>
+      </div>
+      <dl class="facts">
+        <div class="rv"><dt>Incorporated</dt><dd>2 February 2015</dd></div>
+        <div class="rv" style="--d:.06s"><dt>Based in</dt><dd>London, UK</dd></div>
+        <div class="rv" style="--d:.12s"><dt>Company number</dt><dd>09417027</dd></div>
+        <div class="rv" style="--d:.18s"><dt>Products</dt><dd>4</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="mono rv">Contact</p>
+      <a class="big rv" href="mailto:hello@okdo.co.uk?subject=Hello">hello@okdo.co.uk</a>
+      <div class="btns rv">
+        <a class="btn solid" href="mailto:hello@okdo.co.uk?subject=Project%20enquiry">Start a project <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="#products">Enquire about a product</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 OK Do! Ltd · Registered in England and Wales, company number 09417027 · VAT 208 1098 27</span>
+    <a href="mailto:hello@okdo.co.uk">hello@okdo.co.uk</a>
+  </div>
+</footer>
+
+<script src="assets/school-dots.js"></script>
+<script src="assets/previews.js"></script>
+<script>
+(function () {
+  var top = document.getElementById('top');
+  function onScroll() { top.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // the door fill grows from the pointer position
+  document.querySelectorAll('.door').forEach(function (d) {
+    d.addEventListener('pointermove', function (e) {
+      var r = d.getBoundingClientRect();
+      d.style.setProperty('--x', (e.clientX - r.left) + 'px');
+      d.style.setProperty('--y', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // the product preview follows the cursor (fine pointers only, see CSS)
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 900px)');
+  document.querySelectorAll('.prow').forEach(function (row) {
+    var peek = row.querySelector('.peek');
+    row.addEventListener('pointermove', function (e) {
+      if (!fine.matches) return;
+      peek.style.setProperty('--px', (e.clientX + 24) + 'px');
+      peek.style.setProperty('--py', (e.clientY - 200) + 'px');
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  OKPreviews.mountAll();
+})();
+</script>
 </body>
 </html>

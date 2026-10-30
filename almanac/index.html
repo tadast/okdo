@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Almanac — school product census · OK Do! Ltd</title>
+<meta name="description" content="Almanac records which named products each English state school uses, from the school's own public website and its pupil premium statement. Pilot places open.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OK Do! Ltd">
+<meta property="og:title" content="Almanac — school product census">
+<meta property="og:description" content="Know which schools use which products. Almanac records the named products that each English state school uses, with a link to the public source.">
+<meta property="og:url" content="https://www.okdo.co.uk/almanac/">
+<link rel="canonical" href="https://www.okdo.co.uk/almanac/">
+<meta property="og:locale" content="en_GB">
+<meta name="theme-color" content="#F4EFE5">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231B1A17'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23F4EFE5'/%3E%3Cpath d='M16 7a9 9 0 0 1 0 18z' fill='%23B0391B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4EFE5; --paper-2:#EBE4D4; --card:#FBF8F2;
+  --ink:#1B1A17; --ink-2:#4A453C; --ink-3:#635C50;
+  --rule:#D9CFBC; --rule-2:#C2B69E;
+  --red:#B0391B; --blue:#22466E;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --gutter:clamp(16px, 4vw, 56px);
+  --max:1280px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 var(--serif);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+body>*{position:relative;z-index:1}
+@media (max-width:640px){body{font-size:17px}}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.num{font-variant-numeric:tabular-nums lining-nums}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;background:var(--ink);color:var(--paper);text-decoration:none;font:500 16px/1 var(--sans);border-radius:3px;transition:background .2s,transform .2s var(--ease),box-shadow .2s}
+.btn:hover{background:#000;transform:translateY(-1px);box-shadow:0 6px 18px -8px rgba(27,26,23,.5)}
+.btn .ar{transition:transform .25s var(--ease)}
+.btn:hover .ar{transform:translateX(3px)}
+.btn-sm{min-height:44px;padding:0 16px;font-size:15px}
+.link{display:inline-flex;align-items:center;min-height:48px;font:500 16px/1 var(--sans);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule-2);padding:0 2px}
+.link:hover{border-color:var(--ink)}
+
+/* header */
+.top{border-bottom:1px solid var(--rule)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-height:44px}
+.mark{width:28px;height:28px;flex:none}
+.brand-name{font:600 22px/1 var(--serif);letter-spacing:-.01em}
+.brand-desc{font:500 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);padding-left:10px;border-left:1px solid var(--rule-2);margin-left:2px}
+.top-nav{display:flex;gap:4px;margin-left:auto}
+.top-nav a{font:500 15px/1 var(--sans);color:var(--ink-2);text-decoration:none;padding:0 12px;min-height:44px;display:inline-flex;align-items:center;border-radius:3px}
+.top-nav a:hover{color:var(--ink);background:var(--paper-2)}
+@media (max-width:900px){.top-nav{display:none}}
+@media (max-width:520px){.brand-desc{display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(32px,5vw,72px);padding-top:clamp(28px,5vw,64px);padding-bottom:clamp(40px,6vw,80px);align-items:start}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 22px;font:500 13px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.stage{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--red);color:var(--red);border-radius:999px;font:500 13px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase}
+.stage i{width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink 1.6s ease-in-out 3}
+@keyframes blink{50%{opacity:.25}}
+h1{font:600 clamp(42px,5.4vw,78px)/1.0 var(--serif);letter-spacing:-.025em;margin:0 0 22px;max-width:12ch}
+h1 em{font-style:italic;font-weight:400;color:var(--red)}
+.lede{font-size:clamp(18px,1.5vw,21px);line-height:1.55;color:var(--ink-2);margin:0 0 28px;max-width:34em}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-bottom:32px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 36px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.facts div{padding:12px 12px 12px 0}
+.facts div+div{padding-left:14px;border-left:1px solid var(--rule)}
+.facts dt{font:500 12px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.facts dd{margin:0;font:600 19px/1.2 var(--serif)}
+
+/* panel */
+.panel{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--ink);padding:20px 22px 18px;box-shadow:0 1px 0 rgba(27,26,23,.04),0 18px 40px -28px rgba(27,26,23,.35)}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.kicker{font:500 12px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+.panel-title{font:600 24px/1.15 var(--serif);margin:0}
+.seg{display:flex;border:1px solid var(--rule-2);border-radius:3px;overflow:hidden;flex:none}
+.seg button{all:unset;box-sizing:border-box;cursor:pointer;min-width:44px;min-height:44px;display:grid;place-items:center;font:500 15px/1 var(--sans);color:var(--ink-2);font-variant-numeric:tabular-nums;transition:background .2s,color .2s}
+.seg button+button{border-left:1px solid var(--rule-2)}
+.seg button:hover{background:var(--paper-2);color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:focus-visible{outline:2px solid var(--red);outline-offset:-4px}
+.panel-sub{font:400 16px/1.4 var(--sans);color:var(--ink-3);margin:6px 0 14px}
+.bars{list-style:none;margin:0;padding:0}
+.bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:8px 0 9px;border-top:1px solid var(--rule);position:relative}
+.bars li::before{content:"";position:absolute;left:-22px;top:0;bottom:0;width:3px;background:transparent;transition:background .6s}
+.bars li.f-a::before{background:var(--blue)}
+.bars li.f-d::before{background:var(--red)}
+.b-name{font:500 15px/1.3 var(--sans)}
+.b-num{font:400 15px/1.3 var(--sans);color:var(--ink-2);font-variant-numeric:tabular-nums;text-align:right}
+.b-num b{color:var(--ink);font-weight:600}
+.b-bar{grid-column:1/-1;height:6px;background:var(--paper-2);border-radius:1px;overflow:hidden}
+.b-bar i{display:block;height:100%;background:var(--ink);transform-origin:left;transform:scaleX(var(--w,0));transition:transform .9s var(--ease)}
+.bars li.none .b-bar i{background:var(--rule-2)}
+.panel-foot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;border-top:1px solid var(--ink);margin-top:2px;padding-top:12px}
+.panel-foot .k{display:block;font:500 12px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.panel-foot b{font:600 22px/1 var(--serif);font-variant-numeric:tabular-nums}
+.plus{color:var(--blue)} .minus{color:var(--red)}
+.panel-log{margin:14px 0 0;padding-top:10px;border-top:1px dashed var(--rule-2);font:400 15px/1.4 var(--mono);color:var(--ink-2);min-height:2.8em}
+.panel-log .s{font-weight:500}
+.tick{display:inline-block;animation:tick .45s var(--ease)}
+@keyframes tick{from{transform:translateY(-6px);opacity:.2}to{transform:none;opacity:1}}
+
+/* map */
+.map-fig{margin:0;position:sticky;top:16px}
+.map-box{position:relative;width:100%;aspect-ratio:530/626;max-height:86vh}
+.map-box canvas{position:absolute;inset:0;width:100%;height:100%}
+.tag{position:absolute;top:0;left:0;font:500 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);padding:7px 9px;border:1px solid var(--rule-2);background:rgba(251,248,242,.8)}
+.legend{position:absolute;top:43%;left:0;list-style:none;margin:0;padding:10px 12px;background:rgba(251,248,242,.85);border:1px solid var(--rule);font:400 14px/1.2 var(--sans);color:var(--ink-2)}
+.legend li{display:flex;align-items:center;gap:9px;padding:4px 0}
+.sw{width:10px;height:10px;border-radius:50%;flex:none}
+.sw.s{width:5px;height:5px;margin:0 2.5px;background:var(--ink);opacity:.6}
+.sw.a{background:var(--blue)}
+.sw.d{border:2px solid var(--red);background:var(--card)}
+figcaption{font:400 15px/1.45 var(--sans);color:var(--ink-3);margin-top:12px;max-width:44em}
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .map-fig{position:relative;top:0;order:2}
+  .hero-text{display:contents}
+  .hero-text>.intro{order:1}
+  .panel{order:3}
+  .map-box{max-height:none}
+}
+@media (max-width:520px){
+  .facts dd{font-size:17px}
+  .facts div+div{padding-left:10px}
+  .legend{font-size:13px;padding:6px 8px}
+  .legend li{padding:3px 0}
+  .panel{padding:18px 16px 16px}
+  .bars li::before{left:-16px}
+}
+
+/* sections */
+.sec{padding:clamp(56px,8vw,112px) 0;border-top:1px solid var(--rule)}
+.sec.alt{background:rgba(235,228,212,.6)}
+.sec-head{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:24px clamp(24px,5vw,72px);margin-bottom:clamp(32px,5vw,56px);align-items:end}
+.sec-no{font:500 13px/1 var(--mono);color:var(--red);letter-spacing:.06em;margin:0 0 14px}
+h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margin:0}
+.sec-head p{margin:0;color:var(--ink-2);font-size:clamp(18px,1.4vw,20px);max-width:36em}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr}}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.steps li{padding:22px 28px 6px 0;position:relative}
+.steps li+li{padding-left:28px;border-left:1px solid var(--rule)}
+.steps .n{display:block;font:400 54px/1 var(--serif);color:var(--red);font-variant-numeric:lining-nums;margin-bottom:14px}
+.steps h3{font:600 22px/1.25 var(--serif);margin:0 0 8px}
+.steps p{margin:0;color:var(--ink-2)}
+@media (max-width:820px){.steps{grid-template-columns:1fr}.steps li,.steps li+li{padding:20px 0;border-left:0;border-top:1px solid var(--rule)}.steps li:first-child{border-top:0}.steps .n{font-size:40px;margin-bottom:8px}}
+
+.ex-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,4vw,56px);margin-top:clamp(40px,6vw,72px);align-items:start}
+@media (max-width:900px){.ex-grid{grid-template-columns:1fr}}
+.mention{background:var(--card);border:1px solid var(--rule);padding:0;box-shadow:0 18px 40px -30px rgba(27,26,23,.4)}
+.mention-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--rule)}
+.mention-h .kicker{margin:0}
+.ex{font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--red);border:1px solid currentColor;padding:5px 7px;border-radius:2px}
+.mention dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr)}
+.mention dt,.mention dd{padding:12px 20px;border-bottom:1px solid var(--rule);margin:0}
+.mention dt{font:500 13px/1.5 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding-right:8px}
+.mention dd{font-size:17px}
+.mention dd:last-of-type,.mention dt:last-of-type{border-bottom:0}
+.mono{font-family:var(--mono);font-size:15px;word-break:break-all;color:var(--ink-2)}
+.conf{display:inline-flex;align-items:center;gap:8px;font:500 15px/1 var(--sans)}
+.pips{display:inline-flex;gap:3px}
+.pips i{width:8px;height:14px;background:var(--rule-2);border-radius:1px}
+.pips.h i{background:var(--ink)} .pips.m i:nth-child(-n+2){background:var(--ink)} .pips.l i:first-child{background:var(--ink)}
+@media (max-width:520px){.mention dl{grid-template-columns:1fr}.mention dt{border-bottom:0;padding-bottom:0}.mention dd{padding-top:4px}}
+
+.levels{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.levels li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.levels .conf{flex-direction:column;align-items:flex-start;gap:8px}
+.levels p{margin:0;color:var(--ink-2)}
+.levels h3{margin:0 0 6px;font:600 20px/1.2 var(--serif)}
+
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+@media (max-width:980px){.cards{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--rule);display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 22px 44px -30px rgba(27,26,23,.45);border-color:var(--rule-2)}
+.card-viz{padding:20px 20px 16px;border-bottom:1px solid var(--rule);min-height:220px}
+.card-body{padding:20px 22px 24px}
+.card h3{font:600 23px/1.2 var(--serif);margin:0 0 8px}
+.card p{margin:0;color:var(--ink-2)}
+.card .note{margin-top:12px;padding-top:12px;border-top:1px dashed var(--rule-2);font-size:16px}
+.viz-label{display:flex;justify-content:space-between;font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.rows{list-style:none;margin:0;padding:0;font:400 14px/1.3 var(--sans)}
+.rows li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;padding:8px 0;border-top:1px solid var(--rule);align-items:baseline}
+.rows li span:first-child b{display:block;font-weight:500;color:var(--ink);font-size:15px}
+.rows li span{color:var(--ink-3)}
+.rows li.rh{border-top:0;padding-top:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.rows li.rh span{color:var(--ink-3)}
+.rows .r{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.stack{list-style:none;margin:0;padding:0;font:400 14px/1.2 var(--sans)}
+.stack li{padding:7px 0}
+.stack .lbl{display:flex;justify-content:space-between;color:var(--ink-2);margin-bottom:6px}
+.stack .bar{display:flex;height:12px;gap:2px}
+.stack .bar i{display:block;height:100%;transform-origin:left;transform:scaleX(0);transition:transform 1s var(--ease)}
+.in .stack .bar i{transform:scaleX(1)}
+.stack .bar i:nth-child(2){transition-delay:.1s}.stack .bar i:nth-child(3){transition-delay:.2s}.stack .bar i:nth-child(4){transition-delay:.3s}
+.k1{background:var(--ink)} .k2{background:var(--blue)} .k3{background:#9C8F76} .k4{background:var(--rule)}
+.keys{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:10px;font:400 13px/1.3 var(--sans);color:var(--ink-3)}
+.keys span{display:inline-flex;align-items:center;gap:6px}
+.keys i{width:9px;height:9px;display:inline-block}
+.alerts{list-style:none;margin:0;padding:0;font:400 14px/1.35 var(--sans)}
+.alerts li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;padding:9px 0;border-top:1px solid var(--rule)}
+.alerts .sg{font:600 16px/1.1 var(--mono);text-align:center}
+.alerts .meta{display:block;color:var(--ink-3);font-size:13px;margin-top:2px}
+
+.cats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink);border-left:1px solid var(--rule)}
+.cats li{padding:22px 20px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:background .25s}
+.cats li:hover{background:var(--card)}
+.cats .ci{font:500 13px/1 var(--mono);color:var(--red);display:block;margin-bottom:12px}
+.cats b{font:600 20px/1.25 var(--serif)}
+.cats li.more{background:transparent;color:var(--ink-3);font-size:16px;display:flex;align-items:flex-end}
+@media (max-width:980px){.cats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.cats li{padding:18px 14px}.cats b{font-size:18px}}
+
+.trust{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,5vw,72px)}
+.trust li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;padding:20px 0;border-top:1px solid var(--rule)}
+.trust svg{width:24px;height:24px;margin-top:2px}
+.trust h3{font:600 20px/1.25 var(--serif);margin:0 0 4px}
+.trust p{margin:0;color:var(--ink-2)}
+@media (max-width:820px){.trust{grid-template-columns:1fr}}
+
+.quote{padding:clamp(64px,9vw,128px) 0;border-top:1px solid var(--rule);text-align:center}
+.quote blockquote{margin:0 auto;max-width:22em}
+.quote blockquote p{font:400 clamp(28px,3.6vw,48px)/1.2 var(--serif);font-style:italic;letter-spacing:-.01em;margin:0}
+.quote .qm{display:block;font:600 72px/0.6 var(--serif);color:var(--red);margin-bottom:18px}
+.quote figcaption{margin:24px auto 0;text-align:center;font:500 14px/1.4 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);max-width:none}
+
+.end{padding:clamp(56px,8vw,104px) 0;background:var(--ink);color:var(--paper)}
+.end-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px clamp(32px,5vw,72px);align-items:end}
+.end h2{color:var(--paper);font-size:clamp(34px,4.4vw,60px);max-width:14ch}
+.end p{color:#CFC7B6;margin:16px 0 0;max-width:34em}
+.end .stage{border-color:#E8805F;color:#E8805F;margin-bottom:20px}
+.end .stage i{background:#E8805F}
+.end .btn{background:var(--paper);color:var(--ink)}
+.end .btn:hover{background:#fff}
+.end .cred{font-size:17px;border-top:1px solid #3A3730;padding-top:18px;margin-top:24px}
+.end .cred a{color:var(--paper);text-decoration-color:#8A8272;text-underline-offset:3px}
+.end .cred a:hover{text-decoration-color:var(--paper)}
+@media (max-width:820px){.end-in{grid-template-columns:1fr}}
+
+.foot{background:var(--ink);color:#B8B0A0;border-top:1px solid #3A3730}
+.foot-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:24px;padding-bottom:72px;font:400 15px/1.5 var(--sans)}
+.foot p{margin:0}
+.foot a{color:var(--paper);display:inline-block;padding:12px 0;margin:-12px 0}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none;transition:none}
+  .stack .bar i{transform:scaleX(1);transition:none}
+  .b-bar i{transition:none}
+  .stage i{animation:none}
+  .card,.btn,.btn .ar{transition:none}
+  .tick{animation:none}
+}
+@media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#top" aria-label="Almanac, top of page">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1B1A17"/><circle cx="16" cy="16" r="9" fill="#F4EFE5"/><path d="M16 7a9 9 0 0 1 0 18z" fill="#B0391B"/></svg>
+      <span class="brand-name">Almanac</span><span class="brand-desc">School product census</span>
+    </a>
+    <nav class="top-nav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#get">What you get</a>
+      <a href="#trust">How we work</a>
+    </nav>
+    <a class="btn btn-sm" href="mailto:hello@okdo.co.uk?subject=Almanac%20enquiry">Enquire</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <div class="intro">
+        <p class="eyebrow"><span>Almanac — school product census</span><span class="stage"><i aria-hidden="true"></i>Pilot places open</span></p>
+        <h1 id="hero-title">Know which schools use <em>which products.</em></h1>
+        <p class="lede">Almanac records the named reading, maths and intervention products that each English state school uses. We read each school’s own public website and its pupil premium statement. Every record links to its source.</p>
+        <div class="cta-row">
+          <a class="btn" href="mailto:hello@okdo.co.uk?subject=Almanac%20enquiry">Enquire about a pilot <span class="ar" aria-hidden="true">→</span></a>
+          <a class="link" href="#how">How it works</a>
+        </div>
+        <dl class="facts">
+          <div><dt>Schools</dt><dd>About 20,000</dd></div>
+          <div><dt>Categories</dt><dd>7 to start</dd></div>
+          <div><dt>Census</dt><dd>Each term</dd></div>
+        </dl>
+      </div>
+
+      <aside class="panel" aria-labelledby="la-title">
+        <div class="panel-head">
+          <div>
+            <p class="kicker">Example local authority (LA) · Illustration</p>
+            <h2 class="panel-title" id="la-title">Example LA <span id="la-n" class="num">1</span></h2>
+          </div>
+          <div class="seg" role="group" aria-label="Choose an example local authority">
+            <button type="button" data-la="0" aria-pressed="true" aria-label="Example LA 1">1</button>
+            <button type="button" data-la="1" aria-pressed="false" aria-label="Example LA 2">2</button>
+            <button type="button" data-la="2" aria-pressed="false" aria-label="Example LA 3">3</button>
+          </div>
+        </div>
+        <p class="panel-sub">Reading. Schools by the product that they name.</p>
+        <ul class="bars" id="bars">
+          <li data-p="0"><span class="b-name">Reading Programme A</span><span class="b-num"><b>81</b> · 38%</span><span class="b-bar" aria-hidden="true"><i style="--w:.38"></i></span></li>
+          <li data-p="1"><span class="b-name">Reading Programme B</span><span class="b-num"><b>58</b> · 27%</span><span class="b-bar" aria-hidden="true"><i style="--w:.27"></i></span></li>
+          <li data-p="2"><span class="b-name">Reading Programme C</span><span class="b-num"><b>30</b> · 14%</span><span class="b-bar" aria-hidden="true"><i style="--w:.14"></i></span></li>
+          <li data-p="3" class="none"><span class="b-name">No reading product named</span><span class="b-num"><b>45</b> · 21%</span><span class="b-bar" aria-hidden="true"><i style="--w:.21"></i></span></li>
+        </ul>
+        <div class="panel-foot">
+          <div><span class="k">Schools</span><b id="la-total">214</b></div>
+          <div><span class="k">Adoptions</span><b class="plus">+<span id="la-adopt">4</span></b></div>
+          <div><span class="k">Drops</span><b class="minus">−<span id="la-drop">2</span></b></div>
+        </div>
+        <p class="panel-log" id="la-log"><span class="s plus">+</span> A primary school adopted Reading Programme B.</p>
+      </aside>
+    </div>
+
+    <figure class="map-fig">
+      <div class="map-box" id="mapbox">
+        <canvas id="map" aria-hidden="true"></canvas>
+        <span class="tag">Illustration</span>
+        <ul class="legend" aria-label="Map key">
+          <li><span class="sw s" aria-hidden="true"></span>School</li>
+          <li><span class="sw a" aria-hidden="true"></span>Adoption</li>
+          <li><span class="sw d" aria-hidden="true"></span>Drop</li>
+        </ul>
+      </div>
+      <figcaption>Illustration. Each dot is an English state school, from a sample of locations. Coloured dots and the circled area are examples, not product data. School locations: Get Information about Schools, Department for Education (DfE). Contains public sector information licensed under the Open Government Licence v3.0.</figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="sec-no">01 — How it works</p><h2 id="how-title">One record for each school, from public sources.</h2></div>
+        <p>We cover every open state-funded mainstream school in England. That is about 20,000 schools. For each school, we record the products that it names in public.</p>
+      </div>
+      <ol class="steps">
+        <li class="rv"><span class="n" aria-hidden="true">1</span><h3>We read the school’s website</h3><p>We visit the school’s own public website and read its pages about the curriculum, reading, maths and phonics.</p></li>
+        <li class="rv d1"><span class="n" aria-hidden="true">2</span><h3>We read the pupil premium statement</h3><p>Each school publishes this statement every year on a DfE template. The template has a table of externally provided programmes.</p></li>
+        <li class="rv d2"><span class="n" aria-hidden="true">3</span><h3>We record each mention</h3><p>A mention is one record that a school names a product. It has the source link, the date and a short note in our own words.</p></li>
+      </ol>
+
+      <div class="ex-grid">
+        <article class="mention rv" aria-labelledby="ex-title">
+          <div class="mention-h"><p class="kicker" id="ex-title">A mention</p><span class="ex">Example</span></div>
+          <dl>
+            <dt>School</dt><dd>Example Primary School · Example LA 1</dd>
+            <dt>Product</dt><dd>Reading Programme A <span style="color:var(--ink-3)">· Reading</span></dd>
+            <dt>Confidence</dt><dd><span class="conf"><span class="pips h" aria-hidden="true"><i></i><i></i><i></i></span>High</span></dd>
+            <dt>Source</dt><dd class="mono">school.example/pupil-premium-statement.pdf</dd>
+            <dt>Date</dt><dd class="num">December 2025</dd>
+            <dt>Note</dt><dd>The table of externally provided programmes lists Reading Programme A for catch-up reading in Years 3 and 4.</dd>
+          </dl>
+        </article>
+        <div class="rv d1">
+          <h3 class="sec-no" style="margin-bottom:16px">Confidence</h3>
+          <ul class="levels">
+            <li><span class="conf"><span class="pips h" aria-hidden="true"><i></i><i></i><i></i></span>High</span><div><p>An explicit statement of use, a row in the pupil premium table, or a pupil login link.</p></div></li>
+            <li><span class="conf"><span class="pips m" aria-hidden="true"><i></i><i></i><i></i></span>Medium</span><div><p>The school names the product on a curriculum page as part of teaching.</p></div></li>
+            <li><span class="conf"><span class="pips l" aria-hidden="true"><i></i><i></i><i></i></span>Low</span><div><p>A recommendation list, a news item or an ambiguous name.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="get" aria-labelledby="get-title">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="sec-no">02 — What you get</p><h2 id="get-title">For vendors of school products.</h2></div>
+        <p>Almanac is for companies that sell reading, maths and intervention products to English state schools. It gives founders, chief executives and sales directors a clear view of the market.</p>
+      </div>
+      <div class="cards">
+        <article class="card rv">
+          <div class="card-viz" aria-hidden="true">
+            <div class="viz-label"><span>Users of Product B</span><span>Example</span></div>
+            <ul class="rows">
+              <li class="rh"><span>School</span><span>Pupils</span><span class="r">Pupil premium</span></li>
+              <li><span><b>Example school 1</b>Example Trust A</span><span>412</span><span class="r">31%</span></li>
+              <li><span><b>Example school 2</b>Example LA 2</span><span>208</span><span class="r">18%</span></li>
+              <li><span><b>Example school 3</b>Example Trust B</span><span>1,104</span><span class="r">22%</span></li>
+              <li><span><b>Example school 4</b>Example LA 3</span><span>96</span><span class="r">40%</span></li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <h3>Competitor school lists</h3>
+            <p>Named schools that use a competitor’s product, with trust, local authority, pupil numbers and pupil premium share.</p>
+          </div>
+        </article>
+        <article class="card rv d1">
+          <div class="card-viz" aria-hidden="true">
+            <div class="viz-label"><span>Share of schools</span><span>Example</span></div>
+            <ul class="stack">
+              <li><div class="lbl"><span>Example LA 1</span></div><div class="bar"><i class="k1" style="width:38%"></i><i class="k2" style="width:27%"></i><i class="k3" style="width:14%"></i><i class="k4" style="width:21%"></i></div></li>
+              <li><div class="lbl"><span>Example LA 2</span></div><div class="bar"><i class="k1" style="width:26%"></i><i class="k2" style="width:37%"></i><i class="k3" style="width:15%"></i><i class="k4" style="width:22%"></i></div></li>
+              <li><div class="lbl"><span>Example Trust A</span></div><div class="bar"><i class="k1" style="width:12%"></i><i class="k2" style="width:70%"></i><i class="k3" style="width:6%"></i><i class="k4" style="width:12%"></i></div></li>
+            </ul>
+            <div class="keys"><span><i class="k1"></i>Product A</span><span><i class="k2"></i>Product B</span><span><i class="k3"></i>Product C</span><span><i class="k4"></i>None named</span></div>
+          </div>
+          <div class="card-body">
+            <h3>Market share</h3>
+            <p>Your share and your competitors’ share of schools, by local authority and by trust.</p>
+          </div>
+        </article>
+        <article class="card rv d2">
+          <div class="card-viz" aria-hidden="true">
+            <div class="viz-label"><span>Since the last census</span><span>Example</span></div>
+            <ul class="alerts">
+              <li><span class="sg plus">+</span><span>Example school 5 adopted Maths Product B<span class="meta">High · pupil premium statement · Dec 2026</span></span></li>
+              <li><span class="sg minus">−</span><span>Example school 6 dropped Maths Product A<span class="meta">High · pupil premium statement · Dec 2026</span></span></li>
+              <li><span class="sg plus">+</span><span>Example school 7 adopted Maths Product C<span class="meta">Medium · maths curriculum page · Nov 2026</span></span></li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <h3>Termly alerts</h3>
+            <p>Schools that adopted or dropped a product since the last census.</p>
+            <p class="note">Schools refresh pupil premium statements each December, so many renewals and switches show at that time.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="cats" aria-labelledby="cats-title">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="sec-no">03 — Categories</p><h2 id="cats-title">Our first categories.</h2></div>
+        <p>A category is a group of products that compete with each other. We start with seven.</p>
+      </div>
+      <ul class="cats rv">
+        <li><span class="ci">01</span><b>Reading</b></li>
+        <li><span class="ci">02</span><b>Maths</b></li>
+        <li><span class="ci">03</span><b>Phonics</b></li>
+        <li><span class="ci">04</span><b>Literacy intervention</b></li>
+        <li><span class="ci">05</span><b>Maths intervention</b></li>
+        <li><span class="ci">06</span><b>Social, emotional and mental health (SEMH)</b></li>
+        <li><span class="ci">07</span><b>Speech and language</b></li>
+        <li class="more">Do you sell in a different category? Tell us when you enquire.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec alt" id="trust" aria-labelledby="trust-title">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="sec-no">04 — How we work</p><h2 id="trust-title">Public sources. No personal data.</h2></div>
+        <p>We record facts about schools as organisations. Every record shows where it came from.</p>
+      </div>
+      <ul class="trust">
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="#B0391B" stroke-width="1.8" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><div><h3>Organisation-level facts only</h3><p>We record which products a school names. We do not record facts about people.</p></div></li>
+        <li class="rv d1"><svg viewBox="0 0 24 24" fill="none" stroke="#B0391B" stroke-width="1.8" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><div><h3>No personal data</h3><p>We do not record the names of staff or governors.</p></div></li>
+        <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="#B0391B" stroke-width="1.8" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><div><h3>Every record links to its source</h3><p>Each mention links to the public page or document where the school names the product.</p></div></li>
+        <li class="rv d1"><svg viewBox="0 0 24 24" fill="none" stroke="#B0391B" stroke-width="1.8" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><div><h3>We do not republish documents</h3><p>We write a short note in our own words and link to the original.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <figure class="quote" aria-label="Why it matters">
+    <div class="wrap rv">
+      <blockquote><span class="qm" aria-hidden="true">“</span><p>There is no single database for UK EdTech companies or how schools use technology.</p></blockquote>
+      <figcaption>Department for Education, assessment of the education technology market, June 2026</figcaption>
+    </div>
+  </figure>
+
+  <section class="end" aria-labelledby="end-title">
+    <div class="wrap end-in">
+      <div class="rv">
+        <span class="stage"><i aria-hidden="true"></i>Pilot places open</span>
+        <h2 id="end-title">See your market, school by school.</h2>
+        <p>Tell us what you sell and which categories matter to you. We will reply with the details of a pilot.</p>
+      </div>
+      <div class="rv d1">
+        <a class="btn" href="mailto:hello@okdo.co.uk?subject=Almanac%20enquiry">Enquire about a pilot <span class="ar" aria-hidden="true">→</span></a>
+        <p class="cred">Built in London by <a href="../">OK Do! Ltd</a>.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>© 2026 OK Do! Ltd · Registered in England and Wales, company number 09417027 · VAT 208 1098 27</p>
+    <p><a href="mailto:hello@okdo.co.uk">hello@okdo.co.uk</a></p>
+  </div>
+</footer>
+
+<script src="../assets/school-dots.js"></script>
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  root.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scroll reveals */
+  var rvs = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    rvs.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var rio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.1 });
+    rvs.forEach(function (el) { rio.observe(el); });
+  }
+
+  /* Seeded random, so the illustration is the same each visit */
+  var seed = 20261030;
+  function rnd() { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }
+
+  /* Example local authority panel */
+  var LAS = [
+    { e: 430, n: 556, total: 214, c: [81, 58, 30] },
+    { e: 442, n: 302, total: 167, c: [44, 61, 25] },
+    { e: 482, n: 152, total: 128, c: [39, 27, 33] }
+  ];
+  var NAMES = ['Reading Programme A', 'Reading Programme B', 'Reading Programme C'];
+  var KINDS = ['A primary school', 'A primary school', 'A junior school', 'An infant school', 'A secondary school', 'An all-through school'];
+  var RKM = 19;
+  var cur = 0, st = null;
+  var barsEl = document.getElementById('bars');
+  var rows = barsEl.querySelectorAll('li');
+  var elN = document.getElementById('la-n'), elTotal = document.getElementById('la-total');
+  var elA = document.getElementById('la-adopt'), elD = document.getElementById('la-drop'), elLog = document.getElementById('la-log');
+  var segBtns = document.querySelectorAll('.seg button');
+
+  function resetState(i) { st = { c: LAS[i].c.slice(), a: 0, d: 0 }; }
+  function sum(a) { return a[0] + a[1] + a[2]; }
+  function setText(el, v, anim) {
+    if (el.textContent === String(v)) return;
+    el.textContent = v;
+    if (anim && !reduce) { el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); }
+  }
+  function render(anim) {
+    var la = LAS[cur], none = la.total - sum(st.c);
+    var vals = st.c.concat([none]);
+    for (var k = 0; k < 4; k++) {
+      var b = rows[k].querySelector('b'), num = rows[k].querySelector('.b-num');
+      var pct = Math.round(vals[k] / la.total * 100);
+      setText(b, vals[k], anim);
+      num.lastChild.textContent = ' · ' + pct + '%';
+      rows[k].querySelector('.b-bar i').style.setProperty('--w', (vals[k] / la.total).toFixed(3));
+    }
+    setText(elN, cur + 1, false);
+    setText(elTotal, la.total, anim);
+    setText(elA, st.a, anim);
+    setText(elD, st.d, anim);
+  }
+  function flash(k, cls) {
+    var r = rows[k];
+    r.classList.remove('f-a', 'f-d'); void r.offsetWidth; r.classList.add(cls);
+    clearTimeout(r._t); r._t = setTimeout(function () { r.classList.remove(cls); }, 1600);
+  }
+  /* Returns 'a' (adoption) or 'd' (drop) and updates the example counts */
+  function laEvent() {
+    var la = LAS[cur], drift = sum(st.c) - sum(la.c), type;
+    if (drift >= 5) type = 'd'; else if (drift <= -5) type = 'a'; else type = rnd() < 0.62 ? 'a' : 'd';
+    var p = Math.floor(rnd() * 3);
+    if (type === 'd' && st.c[p] <= 0) type = 'a';
+    var kind = KINDS[Math.floor(rnd() * KINDS.length)];
+    if (type === 'a') { st.c[p]++; st.a++; flash(p, 'f-a'); }
+    else { st.c[p]--; st.d++; flash(p, 'f-d'); }
+    render(true);
+    elLog.innerHTML = type === 'a'
+      ? '<span class="s plus">+</span> ' + kind + ' adopted ' + NAMES[p] + '.'
+      : '<span class="s minus">−</span> ' + kind + ' dropped ' + NAMES[p] + '.';
+    return type;
+  }
+
+  resetState(0);
+  if (reduce) { st.a = 4; st.d = 2; st.c = [81, 59, 31]; }
+  else { elLog.textContent = 'Changes since the last census appear here.'; }
+  render(false);
+
+  /* Map */
+  var D = window.SCHOOL_DOTS || [];
+  var N = D.length / 2;
+  var E0 = 136, E1 = 654, N0 = 25, N1 = 637;
+  var box = document.getElementById('mapbox');
+  var cv = document.getElementById('map');
+  if (!cv.getContext || !N) return;
+  var ctx = cv.getContext('2d');
+  var base = document.createElement('canvas'), bctx = base.getContext('2d');
+  var W = 0, H = 0, dpr = 1, s = 1, ox = 0, oy = 0, rDot = 1.2;
+  var px = new Float32Array(N), py = new Float32Array(N), appear = new Float32Array(N);
+  var INTRO = 2300;
+  for (var i = 0; i < N; i++) appear[i] = (D[2 * i + 1] - N0) / (N1 - N0) * 1800 + rnd() * 320;
+
+  var inLA = LAS.map(function (la) {
+    var out = [];
+    for (var j = 0; j < N; j++) { var dx = D[2 * j] - la.e, dy = D[2 * j + 1] - la.n; if (dx * dx + dy * dy < RKM * RKM * 0.8) out.push(j); }
+    return out;
+  });
+
+  function X(e) { return ox + (e - E0) * s; }
+  function Y(n) { return oy + (N1 - n) * s; }
+
+  function layout() {
+    var r = box.getBoundingClientRect();
+    W = Math.round(r.width); H = Math.round(r.height);
+    if (!W || !H) return false;
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    cv.width = base.width = Math.round(W * dpr);
+    cv.height = base.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    bctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var pad = 8;
+    s = Math.min((W - pad * 2) / (E1 - E0), (H - pad * 2) / (N1 - N0));
+    ox = (W - (E1 - E0) * s) / 2; oy = (H - (N1 - N0) * s) / 2;
+    rDot = Math.max(0.85, Math.min(1.55, s * 0.95));
+    for (var k = 0; k < N; k++) { px[k] = X(D[2 * k]); py[k] = Y(D[2 * k + 1]); }
+    bctx.clearRect(0, 0, W, H);
+    bctx.fillStyle = 'rgba(27,26,23,.52)';
+    bctx.beginPath();
+    for (var m = 0; m < N; m++) { bctx.moveTo(px[m] + rDot, py[m]); bctx.arc(px[m], py[m], rDot, 0, 6.2832); }
+    bctx.fill();
+    return true;
+  }
+
+  /* Animation state; the clock runs only while the map is visible */
+  var clock = 0, last = 0, raf = 0, inView = false, ready = false;
+  var pulses = [], nextPulse = INTRO + 300;
+  var laFrom = { e: LAS[0].e, n: LAS[0].n }, laTo = laFrom, laT0 = -1e9;
+
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function laPos() {
+    var t = Math.min(1, (clock - laT0) / 900), k = ease(t);
+    return { e: laFrom.e + (laTo.e - laFrom.e) * k, n: laFrom.n + (laTo.n - laFrom.n) * k };
+  }
+
+  function spawn() {
+    var useLA = rnd() < 0.5, idx, type;
+    if (useLA) {
+      var list = inLA[cur];
+      idx = list[Math.floor(rnd() * list.length)];
+      type = laEvent();
+    } else {
+      idx = Math.floor(rnd() * N);
+      type = rnd() < 0.6 ? 'a' : 'd';
+    }
+    pulses.push({ i: idx, t: clock, type: type });
+    if (pulses.length > 14) pulses.shift();
+  }
+
+  function drawLA(alpha) {
+    var p = laPos(), cx = X(p.e), cy = Y(p.n), r = RKM * s;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = 'rgba(176,57,27,.06)';
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, 6.2832); ctx.fill();
+    ctx.setLineDash([3, 3]); ctx.lineWidth = 1.2; ctx.strokeStyle = 'rgba(27,26,23,.8)';
+    ctx.stroke(); ctx.setLineDash([]);
+    var lx = cx + r * 0.72, ly = cy - r * 0.72;
+    ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(lx + 14, ly - 14); ctx.stroke();
+    var label = 'Example LA ' + (cur + 1);
+    ctx.font = '500 12px "IBM Plex Sans", system-ui, sans-serif';
+    var tw = ctx.measureText(label).width;
+    var bx = Math.min(lx + 14, W - tw - 14), by = ly - 30;
+    ctx.fillStyle = 'rgba(251,248,242,.94)'; ctx.fillRect(bx, by, tw + 12, 20);
+    ctx.strokeStyle = 'rgba(27,26,23,.8)'; ctx.lineWidth = 1; ctx.strokeRect(bx + .5, by + .5, tw + 11, 19);
+    ctx.fillStyle = '#1B1A17'; ctx.textBaseline = 'middle'; ctx.fillText(label, bx + 6, by + 10.5);
+    ctx.restore();
+  }
+
+  function drawPulse(p) {
+    var age = clock - p.t, x = px[p.i], y = py[p.i];
+    var col = p.type === 'a' ? '34,70,110' : '176,57,27';
+    for (var k = 0; k < 2; k++) {
+      var a = age - k * 260;
+      if (a > 0 && a < 1500) {
+        var t = a / 1500;
+        ctx.strokeStyle = 'rgba(' + col + ',' + (0.7 * (1 - t)).toFixed(3) + ')';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.arc(x, y, 3 + t * 17, 0, 6.2832); ctx.stroke();
+      }
+    }
+    var life = 7000, al = Math.min(1, age / 220) * (age > life - 1200 ? Math.max(0, (life - age) / 1200) : 1);
+    if (al <= 0) return;
+    ctx.globalAlpha = al;
+    if (p.type === 'a') {
+      ctx.fillStyle = '#22466E';
+      ctx.beginPath(); ctx.arc(x, y, 3.4, 0, 6.2832); ctx.fill();
+    } else {
+      ctx.fillStyle = '#FBF8F2'; ctx.strokeStyle = '#B0391B'; ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 6.2832); ctx.fill(); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    if (clock < INTRO) {
+      var full = new Path2D();
+      ctx.fillStyle = 'rgba(27,26,23,.52)';
+      for (var k = 0; k < N; k++) {
+        var age = clock - appear[k];
+        if (age <= 0) continue;
+        if (age > 380) { full.moveTo(px[k] + rDot, py[k]); full.arc(px[k], py[k], rDot, 0, 6.2832); }
+        else {
+          var t = age / 380;
+          ctx.globalAlpha = t;
+          ctx.fillStyle = t < 0.6 ? '#B0391B' : 'rgba(27,26,23,.52)';
+          ctx.beginPath(); ctx.arc(px[k], py[k], rDot * (2.2 - 1.2 * t), 0, 6.2832); ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1; ctx.fillStyle = 'rgba(27,26,23,.52)'; ctx.fill(full);
+      var sweepN = N0 + Math.min(1, clock / 1900) * (N1 - N0 + 30);
+      var sy = Y(sweepN);
+      if (clock < 2100) {
+        var g = ctx.createLinearGradient(0, sy, 0, sy + 46);
+        g.addColorStop(0, 'rgba(176,57,27,.16)'); g.addColorStop(1, 'rgba(176,57,27,0)');
+        ctx.fillStyle = g; ctx.fillRect(ox, sy, (E1 - E0) * s, 46);
+        ctx.fillStyle = 'rgba(176,57,27,.75)'; ctx.fillRect(ox, sy, (E1 - E0) * s, 1);
+      }
+    } else {
+      ctx.drawImage(base, 0, 0, W, H);
+    }
+    var laAlpha = Math.max(0, Math.min(1, (clock - INTRO + 400) / 600));
+    if (laAlpha > 0) drawLA(laAlpha);
+    for (var q = 0; q < pulses.length; q++) drawPulse(pulses[q]);
+  }
+
+  function frame(now) {
+    raf = 0;
+    var dt = Math.min(50, now - last); last = now;
+    clock += dt;
+    while (clock >= nextPulse) { spawn(); nextPulse += 1000 + rnd() * 900; }
+    draw();
+    schedule();
+  }
+  function running() { return ready && inView && !document.hidden && !reduce; }
+  function schedule() { if (!raf && running()) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+
+  function drawStatic() {
+    clock = INTRO + 1000; laT0 = -1e9;
+    pulses = [];
+    var picks = [[0, 'a'], [5, 'a'], [9, 'd'], [14, 'a'], [20, 'd']];
+    picks.forEach(function (pk) { var l = inLA[cur]; pulses.push({ i: l[(pk[0] * 7) % l.length], t: clock - 3000, type: pk[1] }); });
+    for (var k = 0; k < 4; k++) pulses.push({ i: Math.floor(rnd() * N), t: clock - 3000, type: k % 2 ? 'd' : 'a' });
+    draw();
+  }
+
+  function selectLA(i) {
+    if (i === cur) return;
+    var p = laPos();
+    laFrom = p; laTo = { e: LAS[i].e, n: LAS[i].n }; laT0 = clock;
+    cur = i; resetState(i);
+    segBtns.forEach(function (b, k) { b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+    if (reduce) { laFrom = laTo; st.a = 3; st.d = 1; render(false); elLog.innerHTML = '<span class="s plus">+</span> A primary school adopted Reading Programme A.'; drawStatic(); return; }
+    render(true);
+    elLog.textContent = 'Changes since the last census appear here.';
+    if (clock >= INTRO) nextPulse = Math.min(nextPulse, clock + 700);
+    if (!running()) draw();
+  }
+  segBtns.forEach(function (b) { b.addEventListener('click', function () { selectLA(+b.dataset.la); }); });
+
+  function init() {
+    ready = layout();
+    if (!ready) return;
+    if (reduce) drawStatic(); else { draw(); schedule(); }
+  }
+  if ('ResizeObserver' in window) {
+    var lastW = 0;
+    new ResizeObserver(function () {
+      var w = Math.round(box.getBoundingClientRect().width);
+      if (w === lastW) return; lastW = w;
+      ready = layout();
+      if (ready) { if (reduce) drawStatic(); else draw(); schedule(); }
+    }).observe(box);
+  } else { window.addEventListener('resize', init); }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { inView = es[0].isIntersecting; schedule(); }).observe(box);
+  } else { inView = true; }
+  document.addEventListener('visibilitychange', schedule);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (ready && !raf) draw(); });
+  init();
+})();
+</script>
+</body>
+</html>
