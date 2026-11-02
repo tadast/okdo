@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Almanac — school product census · OK Do! Ltd</title>
-<meta name="description" content="Almanac records which named products each English state school uses, from the school's own public website and its pupil premium statement. Pilot places open.">
+<meta name="description" content="Almanac turns public information from about 20,000 English school websites into one dataset of the products each school uses. Search, filter and analyse it. Pilot places open.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OK Do! Ltd">
 <meta property="og:title" content="Almanac — school product census">
@@ -257,6 +257,52 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
 .foot p{margin:0}
 .foot a{color:var(--paper);display:inline-block;padding:12px 0;margin:-12px 0}
 
+/* problem: scattered sources become one table */
+.scatter{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.1fr);gap:clamp(16px,3vw,40px);align-items:center}
+.srcs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.src{background:var(--card);border:1px solid var(--rule);padding:12px 14px 14px;box-shadow:0 14px 30px -24px rgba(27,26,23,.5);transform:rotate(var(--r,0deg)) translateY(var(--y,0px));font-family:var(--sans)}
+.src .fmt{display:inline-block;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--rule-2);padding:4px 6px;border-radius:2px;margin-bottom:10px}
+.src b{display:block;font:600 15px/1.3 var(--sans);margin-bottom:8px}
+.src .ln{display:block;height:6px;background:var(--paper-2);border-radius:3px;margin:7px 0}
+.src .ln.s{width:60%}
+.src mark{display:inline;font:500 14px/1.5 var(--sans);color:var(--ink);padding:1px 3px;background:linear-gradient(rgba(176,57,27,.2),rgba(176,57,27,.2)) 0 0/0 100% no-repeat;transition:background-size .5s var(--ease);transition-delay:calc(var(--i) * .3s + .4s)}
+.scatter.in .src mark{background-size:100% 100%}
+.flow{display:flex;flex-direction:column;align-items:center;gap:8px;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.flow svg{width:56px;height:24px;overflow:visible}
+.flow path{fill:none;stroke:var(--red);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s var(--ease) .2s}
+.scatter.in .flow path{stroke-dashoffset:0}
+.tbl{background:var(--card);border:1px solid var(--ink);font-family:var(--sans);box-shadow:0 18px 40px -30px rgba(27,26,23,.45)}
+.tbl-h,.tbl-r{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1.35fr) minmax(0,.7fr);gap:12px;padding:10px 16px}
+.tbl-h{font:500 12px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--ink)}
+.tbl-r{font-size:15px;line-height:1.35;border-top:1px solid var(--rule);opacity:0;transform:translateX(-10px);transition:opacity .5s var(--ease),transform .5s var(--ease);transition-delay:calc(var(--i) * .3s + .7s)}
+.tbl-h+.tbl-r{border-top:0}
+.tbl-r small{display:block;color:var(--ink-3);font-size:13px}
+.tbl-r .f{font:400 12px/1.35 var(--mono);color:var(--ink-3);align-self:center}
+.scatter.in .tbl-r{opacity:1;transform:none}
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px);margin-top:clamp(40px,6vw,72px)}
+.vs article{padding:clamp(20px,3vw,32px);border:1px solid var(--rule);background:var(--card)}
+.vs .with{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.vs h3{font:600 24px/1.2 var(--serif);margin:0 0 16px}
+.vs ul{list-style:none;margin:0;padding:0}
+.vs li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;padding:11px 0;border-top:1px solid var(--rule);font:400 16px/1.5 var(--sans)}
+.vs .with li{border-top-color:#3A3730}
+.vs li::before{content:"\00D7";font:500 17px/1.4 var(--mono);color:var(--red)}
+.vs .with li::before{content:"\2713";color:#EBB59F}
+@media (max-width:900px){
+  .scatter{grid-template-columns:1fr}
+  .flow svg{transform:rotate(90deg);margin:16px 0}
+  .src:nth-child(n+5){display:none}
+  .tbl-r:nth-child(n+6){display:none}
+}
+@media (max-width:520px){
+  .tbl-h,.tbl-r{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}
+  .tbl-h span:nth-child(2){display:none}
+  .tbl-r span:first-child{font-weight:600}
+  .tbl-r span:nth-child(2){grid-column:1}
+  .tbl-r .f{grid-column:2;grid-row:1 / span 2}
+}
+@media (max-width:820px){.vs{grid-template-columns:1fr}}
+
 /* reveal */
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -268,6 +314,7 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
   .stage i{animation:none}
   .card,.btn,.btn .ar{transition:none}
   .tick{animation:none}
+  .src mark,.flow path,.tbl-r{transition:none}
 }
 @media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
 </style>
@@ -280,6 +327,7 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
       <span class="brand-name">Almanac</span><span class="brand-desc">School product census</span>
     </a>
     <nav class="top-nav" aria-label="Sections">
+      <a href="#problem">The problem</a>
       <a href="#how">How it works</a>
       <a href="#get">What you get</a>
       <a href="#trust">How we work</a>
@@ -294,7 +342,7 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
       <div class="intro">
         <p class="eyebrow"><span>Almanac — school product census</span><span class="stage"><i aria-hidden="true"></i>Pilot places open</span></p>
         <h1 id="hero-title">Know which schools use <em>which products.</em></h1>
-        <p class="lede">Almanac records the named reading, maths and intervention products that each English state school uses. We read each school’s own public website and its pupil premium statement. Every record links to its source.</p>
+        <p class="lede">Which reading, maths and intervention products does each English state school use? The answers are public, but they are scattered across about 20,000 school websites in many formats. Almanac turns them into one dataset that you can search and analyse. Every record links to its source.</p>
         <div class="cta-row">
           <a class="btn" href="mailto:hello@okdo.co.uk?subject=Almanac%20enquiry">Enquire about a pilot <span class="ar" aria-hidden="true">→</span></a>
           <a class="link" href="#how">How it works</a>
@@ -348,16 +396,65 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
     </figure>
   </section>
 
+  <section class="sec" id="problem" aria-labelledby="problem-title">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div><p class="sec-no">01 — The problem</p><h2 id="problem-title">The facts are public. They are also scattered.</h2></div>
+        <p>Schools name the products that they use, but each school does it in its own way. The facts sit in web pages, PDF files, Word documents and newsletters, on about 20,000 different websites.</p>
+      </div>
+      <div class="scatter rv" role="img" aria-label="Illustration: six school documents in different formats each name a product. Almanac puts the products into one table, with the school, the category and the source format.">
+        <div class="srcs" aria-hidden="true">
+          <div class="src" style="--r:-2.5deg;--y:0px;--i:0"><span class="fmt">PDF</span><b>Curriculum overview</b><span class="ln"></span><span class="ln s"></span><mark>Reading Programme A</mark></div>
+          <div class="src" style="--r:2deg;--y:14px;--i:1"><span class="fmt">Web page</span><b>Maths at our school</b><span class="ln"></span><span class="ln s"></span><mark>Maths Product B</mark></div>
+          <div class="src" style="--r:1.5deg;--y:0px;--i:2"><span class="fmt">Word</span><b>School improvement plan</b><mark>Phonics Scheme C</mark><span class="ln"></span><span class="ln s"></span></div>
+          <div class="src" style="--r:-1.5deg;--y:10px;--i:3"><span class="fmt">Newsletter</span><b>Autumn term news</b><span class="ln"></span><span class="ln s"></span><mark>Reading Programme B</mark></div>
+          <div class="src" style="--r:-1deg;--y:0px;--i:4"><span class="fmt">PDF</span><b>Support for pupils</b><mark>Speech Product D</mark><span class="ln"></span><span class="ln s"></span></div>
+          <div class="src" style="--r:2.5deg;--y:8px;--i:5"><span class="fmt">Web page</span><b>A guide for parents</b><span class="ln"></span><span class="ln s"></span><mark>Maths Product A</mark></div>
+        </div>
+        <div class="flow" aria-hidden="true"><svg viewBox="0 0 56 24"><path pathLength="1" d="M2 12h50M42 3l10 9-10 9"/></svg>Almanac</div>
+        <div class="tbl" aria-hidden="true">
+          <div class="tbl-h"><span>School</span><span>Product</span><span>Source</span></div>
+          <div class="tbl-r" style="--i:0"><span>Example Primary School</span><span>Reading Programme A<small>Reading</small></span><span class="f">PDF</span></div>
+          <div class="tbl-r" style="--i:1"><span>Example Academy</span><span>Maths Product B<small>Maths</small></span><span class="f">Web page</span></div>
+          <div class="tbl-r" style="--i:2"><span>Example Junior School</span><span>Phonics Scheme C<small>Phonics</small></span><span class="f">Word</span></div>
+          <div class="tbl-r" style="--i:3"><span>Example Infant School</span><span>Reading Programme B<small>Reading</small></span><span class="f">Newsletter</span></div>
+          <div class="tbl-r" style="--i:4"><span>Example High School</span><span>Speech Product D<small>Speech and language</small></span><span class="f">PDF</span></div>
+          <div class="tbl-r" style="--i:5"><span>Example Primary Academy</span><span>Maths Product A<small>Maths</small></span><span class="f">Web page</span></div>
+        </div>
+      </div>
+      <div class="vs">
+        <article class="rv">
+          <h3>Without Almanac</h3>
+          <ul>
+            <li>Each school publishes in its own format and in its own place.</li>
+            <li>Someone must open each website and each document, one at a time.</li>
+            <li>A check of about 20,000 schools by hand takes months.</li>
+            <li>The list is out of date before it is complete.</li>
+          </ul>
+        </article>
+        <article class="with rv d1">
+          <h3>With Almanac</h3>
+          <ul>
+            <li>One dataset for every state school in England.</li>
+            <li>A consistent record for each product, with a link to its source.</li>
+            <li>Search, filter and compare by product, category, local authority or trust.</li>
+            <li>Termly updates show which schools adopted or dropped a product.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="how" aria-labelledby="how-title">
     <div class="wrap">
       <div class="sec-head rv">
-        <div><p class="sec-no">01 — How it works</p><h2 id="how-title">One record for each school, from public sources.</h2></div>
-        <p>We cover every open state-funded mainstream school in England. That is about 20,000 schools. For each school, we record the products that it names in public.</p>
+        <div><p class="sec-no">02 — How it works</p><h2 id="how-title">One dataset that you can query.</h2></div>
+        <p>Almanac does the slow work once, for every open state-funded mainstream school in England. You get consistent records that you can search, compare and track over time.</p>
       </div>
       <ol class="steps">
-        <li class="rv"><span class="n" aria-hidden="true">1</span><h3>We read the school’s website</h3><p>We visit the school’s own public website and read its pages about the curriculum, reading, maths and phonics.</p></li>
-        <li class="rv d1"><span class="n" aria-hidden="true">2</span><h3>We read the pupil premium statement</h3><p>Each school publishes this statement every year on a DfE template. The template has a table of externally provided programmes.</p></li>
-        <li class="rv d2"><span class="n" aria-hidden="true">3</span><h3>We record each mention</h3><p>A mention is one record that a school names a product. It has the source link, the date and a short note in our own words.</p></li>
+        <li class="rv"><span class="n" aria-hidden="true">1</span><h3>We find the sources</h3><p>We find the public pages and documents in which each school names the products that it uses.</p></li>
+        <li class="rv d1"><span class="n" aria-hidden="true">2</span><h3>We extract the facts</h3><p>Our software reads each source, in any format. It finds each product that a school names, puts it in its category and records how strongly the source shows use.</p></li>
+        <li class="rv d2"><span class="n" aria-hidden="true">3</span><h3>You search and analyse</h3><p>Query every school in one place. Filter by product, category, local authority or trust, and export the results.</p></li>
       </ol>
 
       <div class="ex-grid">
@@ -367,17 +464,17 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
             <dt>School</dt><dd>Example Primary School · Example LA 1</dd>
             <dt>Product</dt><dd>Reading Programme A <span style="color:var(--ink-3)">· Reading</span></dd>
             <dt>Confidence</dt><dd><span class="conf"><span class="pips h" aria-hidden="true"><i></i><i></i><i></i></span>High</span></dd>
-            <dt>Source</dt><dd class="mono">school.example/pupil-premium-statement.pdf</dd>
-            <dt>Date</dt><dd class="num">December 2025</dd>
-            <dt>Note</dt><dd>The table of externally provided programmes lists Reading Programme A for catch-up reading in Years 3 and 4.</dd>
+            <dt>Source</dt><dd class="mono">school.example/curriculum/reading</dd>
+            <dt>Date</dt><dd class="num">November 2025</dd>
+            <dt>Note</dt><dd>The reading page names Reading Programme A for catch-up reading in Years 3 and 4.</dd>
           </dl>
         </article>
         <div class="rv d1">
           <h3 class="sec-no" style="margin-bottom:16px">Confidence</h3>
           <ul class="levels">
-            <li><span class="conf"><span class="pips h" aria-hidden="true"><i></i><i></i><i></i></span>High</span><div><p>An explicit statement of use, a row in the pupil premium table, or a pupil login link.</p></div></li>
-            <li><span class="conf"><span class="pips m" aria-hidden="true"><i></i><i></i><i></i></span>Medium</span><div><p>The school names the product on a curriculum page as part of teaching.</p></div></li>
-            <li><span class="conf"><span class="pips l" aria-hidden="true"><i></i><i></i><i></i></span>Low</span><div><p>A recommendation list, a news item or an ambiguous name.</p></div></li>
+            <li><span class="conf"><span class="pips h" aria-hidden="true"><i></i><i></i><i></i></span>High</span><div><p>The school states that it uses the product.</p></div></li>
+            <li><span class="conf"><span class="pips m" aria-hidden="true"><i></i><i></i><i></i></span>Medium</span><div><p>The school names the product as part of its teaching.</p></div></li>
+            <li><span class="conf"><span class="pips l" aria-hidden="true"><i></i><i></i><i></i></span>Low</span><div><p>The school names the product in passing, for example in a news item.</p></div></li>
           </ul>
         </div>
       </div>
@@ -387,7 +484,7 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
   <section class="sec alt" id="get" aria-labelledby="get-title">
     <div class="wrap">
       <div class="sec-head rv">
-        <div><p class="sec-no">02 — What you get</p><h2 id="get-title">For vendors of school products.</h2></div>
+        <div><p class="sec-no">03 — What you get</p><h2 id="get-title">For vendors of school products.</h2></div>
         <p>Almanac is for companies that sell reading, maths and intervention products to English state schools. It gives founders, chief executives and sales directors a clear view of the market.</p>
       </div>
       <div class="cards">
@@ -426,15 +523,15 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
           <div class="card-viz" aria-hidden="true">
             <div class="viz-label"><span>Since the last census</span><span>Example</span></div>
             <ul class="alerts">
-              <li><span class="sg plus">+</span><span>Example school 5 adopted Maths Product B<span class="meta">High · pupil premium statement · Dec 2026</span></span></li>
-              <li><span class="sg minus">−</span><span>Example school 6 dropped Maths Product A<span class="meta">High · pupil premium statement · Dec 2026</span></span></li>
-              <li><span class="sg plus">+</span><span>Example school 7 adopted Maths Product C<span class="meta">Medium · maths curriculum page · Nov 2026</span></span></li>
+              <li><span class="sg plus">+</span><span>Example school 5 adopted Maths Product B<span class="meta">High · school document · Dec 2026</span></span></li>
+              <li><span class="sg minus">−</span><span>Example school 6 dropped Maths Product A<span class="meta">High · school web page · Dec 2026</span></span></li>
+              <li><span class="sg plus">+</span><span>Example school 7 adopted Maths Product C<span class="meta">Medium · school web page · Nov 2026</span></span></li>
             </ul>
           </div>
           <div class="card-body">
             <h3>Termly alerts</h3>
             <p>Schools that adopted or dropped a product since the last census.</p>
-            <p class="note">Schools refresh pupil premium statements each December, so many renewals and switches show at that time.</p>
+            <p class="note">Many schools review their products once a year. Termly alerts show each change soon after a school publishes it.</p>
           </div>
         </article>
       </div>
@@ -444,7 +541,7 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
   <section class="sec" id="cats" aria-labelledby="cats-title">
     <div class="wrap">
       <div class="sec-head rv">
-        <div><p class="sec-no">03 — Categories</p><h2 id="cats-title">Our first categories.</h2></div>
+        <div><p class="sec-no">04 — Categories</p><h2 id="cats-title">Our first categories.</h2></div>
         <p>A category is a group of products that compete with each other. We start with seven.</p>
       </div>
       <ul class="cats rv">
@@ -463,7 +560,7 @@ h2{font:600 clamp(32px,3.6vw,50px)/1.06 var(--serif);letter-spacing:-.02em;margi
   <section class="sec alt" id="trust" aria-labelledby="trust-title">
     <div class="wrap">
       <div class="sec-head rv">
-        <div><p class="sec-no">04 — How we work</p><h2 id="trust-title">Public sources. No personal data.</h2></div>
+        <div><p class="sec-no">05 — How we work</p><h2 id="trust-title">Public sources. No personal data.</h2></div>
         <p>We record facts about schools as organisations. Every record shows where it came from.</p>
       </div>
       <ul class="trust">
